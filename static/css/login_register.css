@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: #f8f9fa; /* Светло-серый фон */
+}
+
+.box {
+    width: 1000px;
+    height: 450px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #8c99a5; /* Темно-серый цвет фона */
+    text-align: center;
+    border-radius: 10px; /* Закругленные углы */
+}
+
+.box h1 {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.box input[type="text"],
+.box input[type="password"],
+.box input[type="submit"],
+.box input[type="email"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #ced4da; /* Светло-серый цвет границы */
+    padding: 14px 10px;
+    width: 300px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.box input[type="text"]:focus,
+.box input[type="password"]:focus,
+.box input[type="email"]:focus{
+    width: 350px;
+    border-color: #454c52; /* Темно-серый цвет границы при фокусе */
+}
+
+.box input[type="submit"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #28a745; /* Зеленый цвет границы */
+    background-color: #28a745; /* Зеленый цвет фона */
+    padding: 14px 10px;
+    width: 280px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.box input[type="submit"]:hover {
+    background: #218838; /* Темнозеленый цвет фона при наведении */
+}
+
+/* Цвет текста placeholder */
+.box input[type="text"]::placeholder,
+.box input[type="password"]::placeholder
+.box input[type="email"]::placeholder{
+    color: #000000; /* Серый цвет текста placeholder */
+}
+
+/* Цвет текста placeholder при фокусе */
+.box input[type="text"]:focus::placeholder,
+.box input[type="password"]:focus::placeholder
+.box input[type="email"]:focus::placeholder {
+    color: #000000; /* Темно-серый цвет текста placeholder при фокусе */
+}

@@ -1,0 +1,152 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block title here</title>
+
+    <!-- Подключение Bootstrap CSS через CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!--  FontAwesome значки -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!--  Animatios -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Ваши дополнительные стили могут быть подключены здесь -->
+    <!-- <link rel="stylesheet" href="path/to/your/custom/styles.css"> -->
+</head>
+<body>
+
+<!-- Навигационная панель -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" 
+    data-aos="fade-right"
+    data-aos-offset="700"
+    data-aos-easing="ease-in-sine">
+
+    <img src="{% static 'images/react_image.png' %}" alt="Logo" style="max-width: 40px; max-height: 40px; margin-right: 5px; border-radius: 40%">
+    <a class="navbar-brand" href="#">InfoProg</a>
+    
+    <div class="collapse navbar-collapse" id="navbarNav" 
+        >
+
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-aos="fade-left"
+                >
+                    <i class="fas fa-home" style="font-size: 25px;"></i>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-aos="fade-left"
+                
+                data-aos-delay="200">
+                    <i class="fa fa-phone" style="font-size: 25px;"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-aos="fade-left"
+                
+                data-aos-delay="400">
+                    <i class="fa fa-user" style="font-size: 25px;"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <form method="GET" class="form-inline mb-4">
+        <div class="form-group mr-2">
+            <input type="text" name="search" class="form-control" placeholder="Поиск">
+        </div>
+        <button type="submit" class="btn btn-primary">Искать</button>
+    </form>
+</div>
+
+<div class="container">
+    <form method="GET" class="form-inline mb-4">
+        <div class="form-group mr-2">
+            <select name="tags" class="form-control">
+                <option value="" selected disabled>Выберите тег</option>
+                {% for tag in tags %}
+                    <option value="{{ tag.tag_name }}">{{ tag.tag_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Фильтровать</button>
+    </form>
+</div>
+
+<div class="container">
+    <form method="GET" class="form-inline mb-4">
+        <div class="form-group mr-2">
+            <select name="authors" class="form-control">
+                <option value="" selected disabled>Выберите автора</option>
+                {% for author in authors %}
+                    <option value="{{ author.username }}">{{ author.username }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Фильтровать</button>
+    </form>
+</div>
+
+
+{% for post in posts %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Latest Posts</h2>
+
+                <div class="card mb-4">
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-between align-items-start">
+                            <h5 class="card-title mb-0">{{ post.title }}</h5>
+                            <p class="mb-0">{{ post.created_at }}</p>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-start mt-3">
+                            <p class="mb-0">Автор поста: {{ post.created_by }}</p>
+                        </div>
+
+                        <p class="card-text mb-3">{{ post.content|slice:':100' }}</p>
+
+                        <div class="d-flex justify-content-between align-items-end">
+                            <a href="{% url 'blog:post_detail' post_id=post.id %}" class="btn btn-primary">Читать подробнее</a>
+                            <a href="#" class="btn btn-secondary">Оставить коментарий</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+
+
+
+<footer>
+
+
+
+
+
+</footer>
+
+<!-- SCRIPTS -->
+<!-- Animations JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!-- Инициализация AOS -->
+<script>
+    AOS.init();
+</script>
+
+</body>   
+</html>
